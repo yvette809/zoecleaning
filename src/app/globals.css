@@ -18,4 +18,12 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  padding-top: 1rem;
+}
+
+@media (max-width: 640px) {
+  /* ✅ Hides zoom icons on small screens */
+  .leaflet-control-zoom {
+    display: none !important;
+  }
 }

@@ -1,30 +1,27 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null; // Prevent hydration mismatch
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full h-20 bg-white shadow-md z-50">
+    <nav className="sticky top-0 left-0 w-full h-20 bg-white shadow-md z-[100]">
       <div className="flex justify-between items-center h-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Logo */}
         <Link href="/" onClick={() => setIsOpen(false)}>
-          <div className="text-lg font-bold cursor-pointer">
-            <h1>ZoeCleaning</h1>
+          <div className="group flex items-center cursor-pointer">
+            <h1 className="text-2xl font-extrabold text-gray-800 group-hover:text-gray-600 transition-colors duration-300 tracking-tight">
+              ZoeCleaning
+            </h1>
+            {/* Optional underline effect */}
+            <span className="block h-1 w-0 bg-[#66a966] group-hover:w-full transition-all duration-500 ease-out"></span>
           </div>
         </Link>
 
@@ -33,25 +30,28 @@ const Navbar = () => {
           <li>
             <Link
               href="#services"
-              className="hover:text-gray-700 transition-colors duration-200"
+              className="relative text-gray-700 px-3 py-2 font-medium overflow-hidden group hover:text-gray-900 transition-colors duration-300"
             >
-              Tjänster
+              <span className="relative z-10">Tjänster</span>
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#66a966] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"></span>
             </Link>
           </li>
           <li>
             <Link
               href="#about-us"
-              className="hover:text-gray-700 transition-colors duration-200"
+              className="relative text-gray-700 px-3 py-2 font-medium overflow-hidden group hover:text-gray-900 transition-colors duration-300"
             >
-              Om oss
+              <span className="relative z-10">Om oss</span>
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#66a966] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"></span>
             </Link>
           </li>
           <li>
             <Link
               href="#contact-us"
-              className="bg-[#66a966] text-white px-4 py-2 rounded-full hover:bg-[#558a55] transition-colors duration-200"
+              className="relative bg-[#66a966] text-white px-4 py-2 rounded-full font-medium overflow-hidden group hover:bg-[#558a55] transition-colors duration-300"
             >
-              Kontakt Oss
+              <span className="relative z-10">Kontakt Oss</span>
+              <span className="absolute inset-0 bg-[#558a55] opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all duration-300 ease-out origin-center rounded-full"></span>
             </Link>
           </li>
         </ul>
@@ -64,58 +64,65 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              <FaTimes className="w-6 h-6 text-red-600" />
+              <FaTimes
+                className="w-6 h-6 text-red-600 z-[200] hover:text-red-800 transition-colors duration-200"
+                aria-hidden="true"
+              />
             ) : (
-              <FaBars className="w-6 h-6" />
+              <FaBars
+                className="w-6 h-6 text-gray-800 z-[200] hover:text-gray-600 transition-colors duration-200"
+                aria-hidden="true"
+              />
             )}
           </button>
         </div>
       </div>
 
       {/* Mobile Overlay Menu */}
-      <div
-        className={`fixed inset-0 bg-gray-800 bg-opacity-75 z-40 transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        onClick={toggleMenu}
-      >
+      {isOpen && (
         <div
-          className={`fixed top-20 left-0 w-full bg-white transform transition-transform duration-300 ${
-            isOpen ? "translate-y-0" : "-translate-y-full"
-          }`}
-          onClick={(e) => e.stopPropagation()}
+          className="fixed inset-0 bg-gray-800 bg-opacity-75 z-40 transition-opacity duration-300"
+          onClick={toggleMenu}
         >
-          <ul className="flex flex-col items-center py-6 space-y-6">
-            <li>
-              <Link
-                href="#services"
-                className="text-lg hover:text-gray-700 transition-colors duration-200"
-                onClick={toggleMenu}
-              >
-                Tjänster
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#about-us"
-                className="text-lg hover:text-gray-700 transition-colors duration-200"
-                onClick={toggleMenu}
-              >
-                Om oss
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#contact-us"
-                className="text-lg bg-[#66a966] text-white px-6 py-2 rounded-full hover:bg-[#558a55] transition-colors duration-200"
-                onClick={toggleMenu}
-              >
-                Kontakt Oss
-              </Link>
-            </li>
-          </ul>
+          <div
+            className="fixed top-20 left-0 w-full bg-white transform transition-transform duration-300 ease-in-out"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ul className="flex flex-col items-center py-6 space-y-6">
+              <li>
+                <Link
+                  href="#services"
+                  className="relative text-lg text-gray-700 px-4 py-2 font-medium overflow-hidden group hover:text-gray-900 transition-colors duration-300"
+                  onClick={toggleMenu}
+                >
+                  <span className="relative z-10">Tjänster</span>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#66a966] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"></span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#about-us"
+                  className="relative text-lg text-gray-700 px-4 py-2 font-medium overflow-hidden group hover:text-gray-900 transition-colors duration-300"
+                  onClick={toggleMenu}
+                >
+                  <span className="relative z-10">Om oss</span>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#66a966] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"></span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#contact-us"
+                  className="relative text-lg bg-[#66a966] text-white px-6 py-2 rounded-full font-medium overflow-hidden group hover:bg-[#558a55] transition-colors duration-300"
+                  onClick={toggleMenu}
+                >
+                  <span className="relative z-10">Kontakt Oss</span>
+                  <span className="absolute inset-0 bg-[#558a55] opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all duration-300 ease-out origin-center rounded-full"></span>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 };

@@ -34,13 +34,14 @@ const MapComponent = () => {
   return (
     <div className="relative w-full h-[50%]">
       {/* ✅ Address Box - Styled for Better Layout */}
-      <div className="absolute top-5 left-20 bg-white shadow-lg rounded-lg px-4 py-3 w-[400px] z-[1000] border border-gray-300 flex justify-between items-center">
+      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded-lg px-3 py-2 w-[90%] max-w-[400px] z-[1000] border border-gray-300 flex justify-between items-center md:top-5 md:w-[400px]">
         <div>
-          <ul className="text-gray-400  ">
+          <ul className="text-gray-500 text-xs sm:text-sm leading-tight">
             <li>{address[0]},</li>
             <li>{address[1]}</li>
           </ul>
         </div>
+
         {/* ✅ Google Maps Link with Navigation Icon */}
         <Link
           href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(

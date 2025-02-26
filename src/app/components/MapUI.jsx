@@ -9,7 +9,7 @@ const DynamicMap = dynamic(() => import("./MapComponent"), {
 
 const MapUI = () => {
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto ">
       <DynamicMap />
     </div>
   );

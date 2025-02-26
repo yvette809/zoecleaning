@@ -73,7 +73,7 @@ export default function ContactUS() {
   };
 
   return (
-    <div className="mt-6 p-6 bg-[#0f3f38] container mx-auto">
+    <div className="mt-6 p-6 bg-[#0f3f38] container mx-auto z-10">
       {/* Contact CTA */}
       <div className="text-center mt-8">
         <div className="text-xl text-gray-400">
