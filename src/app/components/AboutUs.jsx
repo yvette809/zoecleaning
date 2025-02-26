@@ -3,7 +3,10 @@ import Link from "next/link";
 
 const AboutUs = () => {
   return (
-    <section className="mt-10 px-4  py-8 container mx-auto" id="about-us">
+    <section
+      className="mt-10 px-4  py-8 container mx-auto scroll-mt-[7rem]"
+      id="about-us"
+    >
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold text-[#66a966]">🚀 Om Oss</h1>
         <p className="text-lg text-gray-700 mt-4">

@@ -73,7 +73,10 @@ export default function ContactUS() {
   };
 
   return (
-    <div className="mt-6 p-6 bg-[#0f3f38] container mx-auto z-10">
+    <section
+      className="mt-6 p-6 bg-[#0f3f38] container mx-auto z-10 scroll-mt-[7rem]"
+      id="contact-us"
+    >
       {/* Contact CTA */}
       <div className="text-center mt-8">
         <div className="text-xl text-gray-400">
@@ -194,6 +197,6 @@ export default function ContactUS() {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }

@@ -21,6 +21,10 @@ body {
   padding-top: 1rem;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @media (max-width: 640px) {
   /* ✅ Hides zoom icons on small screens */
   .leaflet-control-zoom {

@@ -7,7 +7,7 @@ import housedecor from "../../assets/images/house-decor.jpg";
 
 const Services = () => {
   return (
-    <section className="mt-10 px-4" id="services">
+    <section className="mt-24 px-4 scroll-mt-[7rem]" id="services">
       {/* Section Header */}
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-[#66a966]">Tjänster</h1>
