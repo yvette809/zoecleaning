@@ -22,7 +22,32 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="hIldfd5_FgxEcQoTIBCqURC6PuqpyXHECAx6ZRRVwlE"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Zoe Cleaning",
+              url: "https://zoecleaning.se",
+              address: {
+                "@type": "Ragvaldsbo Gårdsväg 14 A,193 37 Sigtuna",
+                addressLocality: "Stockholm",
+                addressCountry: "SE",
+              },
+              telephone: "+46-767-115241",
+              description:
+                "Eco-friendly and reliable cleaning services in Stockholm.",
+            }),
+          }}
+        />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Navbar />
         <main>{children}</main>
         <Footer />
