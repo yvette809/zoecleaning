@@ -88,7 +88,7 @@ export default function ContactUS() {
         </div>
         <div className="text-gray-500 font-bold">
           <p>Tell: 0767-115 241</p>
-          <p>Epost: rose@zoeCleaning.se</p>
+          <p>Epost: rose@zoecleaning.se</p>
         </div>
       </div>
 
