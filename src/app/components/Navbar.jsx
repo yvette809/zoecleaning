@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
+import imageLogo from "../../assets/images/logo1.png";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,9 +19,14 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" onClick={() => setIsOpen(false)}>
           <div className="group flex items-center cursor-pointer">
-            <h1 className="text-2xl font-extrabold text-gray-800 group-hover:text-gray-600 transition-colors duration-300 tracking-tight">
-              ZoeCleaning
-            </h1>
+            <Image
+              src={imageLogo}
+              width={120}
+              height={40}
+              alt="Zoe Cleaning Logo"
+              className="transition-all duration-300"
+            />
+
             {/* Optional underline effect */}
             <span className="block h-1 w-0 bg-[#66a966] group-hover:w-full transition-all duration-500 ease-out"></span>
           </div>
