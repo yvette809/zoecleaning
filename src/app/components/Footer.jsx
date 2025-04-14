@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   const todaysYear = new Date().getFullYear();
   return (
-    <footer className="bg-[#66a966] text-gray-800 py-8 mt-16">
+    <footer className="bg-[#0b130b] text-white py-8 mt-16">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         {/* Company Section */}
         <div>

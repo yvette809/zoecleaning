@@ -3,6 +3,7 @@ import ContactUs from "./components/ContactUs";
 import Services from "./components/Services";
 import Hero from "./components/Hero";
 import cleaningpic from "../assets/images/cleaningpic.jpg";
+import SocialMedia from "./components/SocialMedia";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Services />
       <AboutUs />
       <ContactUs />
+      <SocialMedia />
     </>
   );
 }

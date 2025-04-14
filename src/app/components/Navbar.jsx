@@ -37,7 +37,7 @@ const Navbar = () => {
           <li>
             <Link
               href="#services"
-              className="relative text-gray-700 px-3 py-2 font-medium overflow-hidden group hover:text-gray-900 transition-colors duration-300"
+              className="relative text-2xl text-gray-700 px-3 py-2 font-medium overflow-hidden group hover:text-gray-900 transition-colors duration-300"
             >
               <span className="relative z-10">Tjänster</span>
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#66a966] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"></span>
@@ -46,7 +46,7 @@ const Navbar = () => {
           <li>
             <Link
               href="#about-us"
-              className="relative text-gray-700 px-3 py-2 font-medium overflow-hidden group hover:text-gray-900 transition-colors duration-300"
+              className="relative text-2xl text-gray-700 px-3 py-2 font-medium overflow-hidden group hover:text-gray-900 transition-colors duration-300"
             >
               <span className="relative z-10">Om oss</span>
               <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#66a966] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"></span>
@@ -55,7 +55,7 @@ const Navbar = () => {
           <li>
             <Link
               href="#contact-us"
-              className="relative bg-[#66a966] text-white px-4 py-2 rounded-full font-medium overflow-hidden group hover:bg-[#558a55] transition-colors duration-300"
+              className="relative text-2xl bg-[#66a966] text-white px-4 py-2 rounded-full font-medium overflow-hidden group hover:bg-[#558a55] transition-colors duration-300"
             >
               <span className="relative z-10">Kontakt Oss</span>
               <span className="absolute inset-0 bg-[#558a55] opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all duration-300 ease-out origin-center rounded-full"></span>
