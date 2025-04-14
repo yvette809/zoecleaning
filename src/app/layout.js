@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Zoe Cleaning AB",
   description:
-    "This is a cleaning company located in Stockholm. We specialise in home and Airbnb cleaning services.",
+    "Zoe Cleaning AB är ett professionellt städföretag i Stockholm som är specialiserat på hemstädning och Airbnb-städning. Vi erbjuder pålitliga, flexibla och miljövänliga städtjänster anpassade efter dina behov.",
 };
 
 export default function RootLayout({ children }) {
@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              name: "Zoe Cleaning",
+              name: "Zoe Cleaning AB",
               url: "https://zoecleaning.se",
               address: {
                 "@type": "Ragvaldsbo Gårdsväg 14 A,193 37 Sigtuna",
@@ -41,6 +41,7 @@ export default function RootLayout({ children }) {
                 addressCountry: "SE",
               },
               telephone: "+46-767-115241",
+              openingHours: "Mo-Su 00:00-23:59",
               description:
                 "Eco-friendly and reliable cleaning services in Stockholm.",
             }),
