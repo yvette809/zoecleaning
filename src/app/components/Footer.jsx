@@ -1,58 +1,26 @@
 import React from "react";
+import Image from "next/image";
+import imageLogo from "../../assets/images/logo1.png";
 
 const Footer = () => {
   const todaysYear = new Date().getFullYear();
   return (
-    <footer className="bg-[#0b130b] text-white py-8 mt-16">
-      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-        {/* Company Section */}
-        <div>
-          <h3 className="text-xl font-bold mb-3">Företag</h3>
-          <ul className="space-y-2">
-            <li>
-              <a href="#about-us" className="hover:text-gray-400">
-                Om oss
-              </a>
-            </li>
-            <li>
-              <a href="#services" className="hover:text-gray-400">
-                Våra tjänster
-              </a>
-            </li>
-          </ul>
+    <footer className="bg-[#0b130b] text-white mt-16 py-6">
+      <div className="container mx-auto px-4 flex flex-col items-center md:flex-row md:justify-between md:items-center ">
+        {/* Bottom Section */}
+        <div className="text-center md:text-right text-2xl mt-4 md:mt-0 border-t border-gray-700 pt-4 md:border-t-0 md:pt-0">
+          © {todaysYear} Zoe Cleaning AB . Alla rättigheter förbehållna.
         </div>
-
-        {/* Support Section */}
-        <div>
-          <h3 className="text-xl font-bold mb-3">Support</h3>
-          <ul className="space-y-2">
-            <li>
-              <a href="#" className="hover:text-gray-400">
-                Kontakt
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-400">
-                Integritetspolicy
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-400">
-                Villkor & Bestämmelser
-              </a>
-            </li>
-          </ul>
+        {/* Logo Section */}
+        <div className="mb-6 md:mb-0">
+          <Image
+            src={imageLogo}
+            width={120}
+            height={60}
+            alt="Zoe Cleaning Logo"
+            className="transition-all duration-300"
+          />
         </div>
-
-        {/* Company Info */}
-        <div>
-          <h3 className="text-xl font-bold mb-3">Zoe Cleaning AB</h3>
-        </div>
-      </div>
-
-      {/* Bottom Section */}
-      <div className="text-center mt-8 border-t border-gray-700 pt-4 text-sm">
-        © {todaysYear} Zoe Cleaning AB . Alla rättigheter förbehållna.
       </div>
     </footer>
   );
