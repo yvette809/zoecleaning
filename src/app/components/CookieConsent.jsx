@@ -1,5 +1,5 @@
-// components/CookieConsent.tsx
 "use client";
+
 import { useEffect, useState } from "react";
 
 const CookieConsent = () => {
@@ -43,13 +43,13 @@ const CookieConsent = () => {
 
   return (
     showBanner && (
-      <div className="fixed bottom-0 left-0 w-full bg-gray-900 text-white p-4 z-50 shadow-md transition-all ease-in-out duration-500 transform translate-y-full sm:translate-y-0 sm:relative">
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm sm:text-base text-center sm:text-left">
+      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div className="bg-gray-900 text-white p-6 w-80 h-80 flex flex-col justify-center items-center rounded-lg shadow-lg transition-all transform scale-100 sm:scale-100">
+          <p className="text-center text-sm sm:text-base">
             Vi använder cookies för att förbättra din upplevelse på vår
             webbplats.
           </p>
-          <div className="flex gap-2 mt-4 sm:mt-0">
+          <div className="flex gap-4 mt-6">
             <button
               onClick={handleAccept}
               className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition"
