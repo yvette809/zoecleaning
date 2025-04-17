@@ -3,9 +3,9 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { z } from "zod";
+import { motion } from "framer-motion";
 import MapUI from "./MapUI";
 
-// Define Zod schema for form validation
 const ContactUsSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters long"),
   tel: z.string().nonempty("Tel is required"),
@@ -20,7 +20,6 @@ export default function ContactUS() {
     email: "",
     message: "",
   });
-
   const [status, setStatus] = useState(null);
   const [errors, setErrors] = useState(null);
 
@@ -54,21 +53,12 @@ export default function ContactUS() {
         emailData
       );
 
-      setStatus(
-        "Thanks, We have received your email, and we will get back to you shortly!"
-      );
+      setStatus("Tack! Vi har mottagit ditt meddelande och återkommer snart.");
       setErrors(null);
-
-      setFormData({
-        name: "",
-        tel: "",
-        email: "",
-        message: "",
-      });
+      setFormData({ name: "", tel: "", email: "", message: "" });
     } catch (error) {
-      console.error("Failed to send email:", error);
       setStatus(null);
-      setErrors({ form: "Failed to submit. Please try again." });
+      setErrors({ form: "Kunde inte skicka. Försök igen senare." });
     }
   };
 
@@ -77,125 +67,125 @@ export default function ContactUS() {
       className="mt-6 p-6 bg-[#0f3f38] container mx-auto z-10 scroll-mt-[7rem]"
       id="contact-us"
     >
-      {/* Contact CTA */}
-      <div className="text-center mt-8">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="text-center mt-8"
+      >
         <div className="text-xl text-gray-400">
           📞 <strong>Behöver du hjälp?</strong>
-          <p className=" inline-block px-4 py-2 rounded-full mx-3 text-gray-400 font-medium">
+          <p className="inline-block px-4 py-2 rounded-full mx-3 text-gray-400 font-medium">
             Kontakta oss
           </p>{" "}
           idag för en <strong>kostnadsfri offert!</strong>
         </div>
         <div className="text-gray-500 font-bold">
-          <p>Tell: 0767-115 241</p>
+          <p>Tel: 0767-115 241</p>
           <p>Epost: rose@zoecleaning.se</p>
         </div>
-      </div>
+      </motion.div>
 
-      <h2 className="text-3xl font-bold text-white my-6 text-center">
+      <motion.h2
+        initial={{ scale: 0.8, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 120 }}
+        viewport={{ once: true }}
+        className="text-3xl font-bold text-white my-6 text-center"
+      >
         KONTAKTA OSS
-      </h2>
+      </motion.h2>
 
       {status && (
-        <div className="text-center text-green-500 text-lg my-4">{status}</div>
+        <motion.div
+          className="text-center text-green-500 text-lg my-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          {status}
+        </motion.div>
       )}
 
-      {/* Conditionally render the form only if no status */}
       {!status && (
-        <div className="flex flex-col-reverse lg:flex-row gap-8">
-          {/* Left Section - Form */}
-          <div className="bg-white shadow-md rounded-lg p-6 w-full lg:w-1/2">
+        <motion.div
+          className="flex flex-col-reverse lg:flex-row gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ staggerChildren: 0.2 }}
+        >
+          <motion.div
+            className="bg-white shadow-md rounded-lg p-6 w-full lg:w-1/2"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Name */}
-              <div className="flex flex-col">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Name"
-                  className="p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#66a966]"
-                />
-                {errors?.name && (
-                  <span className="text-red-500 text-sm">
-                    {errors.name?._errors.join(", ")}
-                  </span>
-                )}
-              </div>
+              {["name", "tel", "email", "message"].map((field, i) => (
+                <motion.div
+                  key={field}
+                  className="flex flex-col"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  {field !== "message" ? (
+                    <input
+                      type={field === "email" ? "email" : "text"}
+                      name={field}
+                      value={formData[field]}
+                      onChange={handleChange}
+                      placeholder={
+                        field.charAt(0).toUpperCase() + field.slice(1)
+                      }
+                      className="p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#66a966]"
+                    />
+                  ) : (
+                    <textarea
+                      name={field}
+                      value={formData[field]}
+                      onChange={handleChange}
+                      placeholder="Your message"
+                      rows="5"
+                      className="p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#66a966]"
+                    />
+                  )}
+                  {errors?.[field] && (
+                    <span className="text-red-500 text-sm">
+                      {errors[field]?._errors.join(", ")}
+                    </span>
+                  )}
+                </motion.div>
+              ))}
 
-              {/* Tel */}
-              <div className="flex flex-col">
-                <input
-                  type="text"
-                  name="tel"
-                  value={formData.tel}
-                  onChange={handleChange}
-                  placeholder="Tel"
-                  className="p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#66a966]"
-                />
-                {errors?.tel && (
-                  <span className="text-red-500 text-sm">
-                    {errors.tel?._errors.join(", ")}
-                  </span>
-                )}
-              </div>
-
-              {/* Email */}
-              <div className="flex flex-col">
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Your Email"
-                  className="p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#66a966]"
-                />
-                {errors?.email && (
-                  <span className="text-red-500 text-sm">
-                    {errors.email?._errors.join(", ")}
-                  </span>
-                )}
-              </div>
-
-              {/* Message */}
-              <div className="flex flex-col">
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Your message"
-                  rows="5"
-                  className="p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#66a966]"
-                />
-                {errors?.message && (
-                  <span className="text-red-500 text-sm">
-                    {errors.message?._errors.join(", ")}
-                  </span>
-                )}
-              </div>
-
-              {/* Submit Button */}
-              <button
+              <motion.button
                 type="submit"
                 className="w-full bg-[#66a966] text-white font-bold py-2 px-4 rounded-md hover:bg-[#558f58] focus:outline-none focus:ring-2 focus:ring-[#66a966]"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
               >
-                Send Now
-              </button>
+                Skicka nu
+              </motion.button>
 
-              {/* Errors */}
               {errors?.form && (
                 <div className="mt-4 text-center text-red-500">
                   {errors.form}
                 </div>
               )}
             </form>
-          </div>
+          </motion.div>
 
-          {/* Right Section - Map */}
-          <div className="w-full lg:w-1/2">
+          {/* Map */}
+          <motion.div
+            className="w-full lg:w-1/2"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <MapUI />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       )}
     </section>
   );

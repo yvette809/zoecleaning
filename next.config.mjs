@@ -8,6 +8,8 @@ const nextConfig = {
     };
     return config;
   },
+  reactStrictMode: true,
+  transpilePackages: ["framer-motion"],
 };
 
 export default nextConfig;
