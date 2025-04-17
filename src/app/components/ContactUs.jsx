@@ -40,7 +40,12 @@ export default function ContactUS() {
     }
 
     const emailData = {
-      ...formData,
+      name: formData.name,
+      tel: formData.tel,
+      email: formData.email,
+      message: formData.message,
+      from_name: formData.name,
+      reply_to: formData.email,
       to_name: "Zoe Cleaning AB",
     };
 
@@ -55,7 +60,12 @@ export default function ContactUS() {
 
       setStatus("Tack! Vi har mottagit ditt meddelande och återkommer snart.");
       setErrors(null);
+      // Reset form data but keep the form visible
       setFormData({ name: "", tel: "", email: "", message: "" });
+      // Hide the success message after 5 seconds
+      setTimeout(() => {
+        setStatus(null);
+      }, 5000);
     } catch (error) {
       setStatus(null);
       setErrors({ form: "Kunde inte skicka. Försök igen senare." });
@@ -107,86 +117,80 @@ export default function ContactUS() {
         </motion.div>
       )}
 
-      {!status && (
+      <motion.div
+        className="flex flex-col-reverse lg:flex-row gap-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ staggerChildren: 0.2 }}
+      >
         <motion.div
-          className="flex flex-col-reverse lg:flex-row gap-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ staggerChildren: 0.2 }}
+          className="bg-white shadow-md rounded-lg p-6 w-full lg:w-1/2"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <motion.div
-            className="bg-white shadow-md rounded-lg p-6 w-full lg:w-1/2"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {["name", "tel", "email", "message"].map((field, i) => (
-                <motion.div
-                  key={field}
-                  className="flex flex-col"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  {field !== "message" ? (
-                    <input
-                      type={field === "email" ? "email" : "text"}
-                      name={field}
-                      value={formData[field]}
-                      onChange={handleChange}
-                      placeholder={
-                        field.charAt(0).toUpperCase() + field.slice(1)
-                      }
-                      className="p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#66a966]"
-                    />
-                  ) : (
-                    <textarea
-                      name={field}
-                      value={formData[field]}
-                      onChange={handleChange}
-                      placeholder="Your message"
-                      rows="5"
-                      className="p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#66a966]"
-                    />
-                  )}
-                  {errors?.[field] && (
-                    <span className="text-red-500 text-sm">
-                      {errors[field]?._errors.join(", ")}
-                    </span>
-                  )}
-                </motion.div>
-              ))}
-
-              <motion.button
-                type="submit"
-                className="w-full bg-[#66a966] text-white font-bold py-2 px-4 rounded-md hover:bg-[#558f58] focus:outline-none focus:ring-2 focus:ring-[#66a966]"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {["name", "tel", "email", "message"].map((field, i) => (
+              <motion.div
+                key={field}
+                className="flex flex-col"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
               >
-                Skicka nu
-              </motion.button>
+                {field !== "message" ? (
+                  <input
+                    type={field === "email" ? "email" : "text"}
+                    name={field}
+                    value={formData[field]}
+                    onChange={handleChange}
+                    placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                    className="p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#66a966]"
+                  />
+                ) : (
+                  <textarea
+                    name={field}
+                    value={formData[field]}
+                    onChange={handleChange}
+                    placeholder="Your message"
+                    rows="5"
+                    className="p-3 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#66a966]"
+                  />
+                )}
+                {errors?.[field] && (
+                  <span className="text-red-500 text-sm">
+                    {errors[field]?._errors.join(", ")}
+                  </span>
+                )}
+              </motion.div>
+            ))}
 
-              {errors?.form && (
-                <div className="mt-4 text-center text-red-500">
-                  {errors.form}
-                </div>
-              )}
-            </form>
-          </motion.div>
+            <motion.button
+              type="submit"
+              className="w-full bg-[#66a966] text-white font-bold py-2 px-4 rounded-md hover:bg-[#558f58] focus:outline-none focus:ring-2 focus:ring-[#66a966]"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Skicka nu
+            </motion.button>
 
-          {/* Map */}
-          <motion.div
-            className="w-full lg:w-1/2"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <MapUI />
-          </motion.div>
+            {errors?.form && (
+              <div className="mt-4 text-center text-red-500">{errors.form}</div>
+            )}
+          </form>
         </motion.div>
-      )}
+
+        {/* Map */}
+        <motion.div
+          className="w-full lg:w-1/2"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <MapUI />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
