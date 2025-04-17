@@ -25,7 +25,7 @@ const AboutUs = () => {
           </div>
           <div className="flex-1">
             <h2 className="text-xl font-semibold text-gray-800">
-              Hemstädning & Airbnb Städning
+              Hemstädning , Kontorsstädning & Airbnb Städning
             </h2>
             <p className="text-gray-600 mt-2">
               Vi ser till att ditt hem eller kontor blir{" "}
