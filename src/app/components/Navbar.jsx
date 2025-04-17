@@ -36,7 +36,7 @@ const Navbar = () => {
               width={120}
               height={40}
               alt="Zoe Cleaning Logo"
-              className="transition-all duration-300"
+              className="transition-all duration-300 filter brightness-40 group-hover:brightness-110"
             />
             <span className="block h-1 w-0 bg-[#66a966] group-hover:w-full transition-all duration-500 ease-out"></span>
           </div>

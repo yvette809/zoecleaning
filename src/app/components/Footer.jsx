@@ -18,7 +18,7 @@ const Footer = () => {
             width={120}
             height={60}
             alt="Zoe Cleaning Logo"
-            className="transition-all duration-300"
+            className="transition-all duration-300 filter brightness-40 group-hover:brightness-110"
           />
         </div>
       </div>
