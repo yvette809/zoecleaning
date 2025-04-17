@@ -263,6 +263,16 @@ const HouseCleaning = () => {
             </li>
           ))}
         </ul>
+
+        {/* Boka Nu Button */}
+        <div className="text-center mt-8">
+          <a
+            href="#boka"
+            className="inline-block px-6 py-3 bg-[#66a966] text-white text-lg font-semibold rounded-lg hover:bg-[#558e56] transition-all"
+          >
+            Boka Nu
+          </a>
+        </div>
       </motion.div>
     </>
   );
