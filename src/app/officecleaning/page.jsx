@@ -4,8 +4,10 @@ import officepic from "@/assets/images/office2.png";
 import Image from "next/image";
 import { FaCheckCircle } from "react-icons/fa";
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const OfficeCleaning = () => {
+  const router = useRouter();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -204,6 +206,7 @@ const OfficeCleaning = () => {
                 boxShadow: { repeat: Infinity, duration: 2 },
               }}
               className="bg-[#66a966] hover:bg-[#559c55] text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300"
+              onClick={() => router.push("/#contact-us")}
             >
               Boka nu
             </motion.button>

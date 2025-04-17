@@ -1,11 +1,14 @@
 "use client";
-import React from "react";
+import React, { use } from "react";
 import airbnbpic from "@/assets/images/airbnb2.png";
 import Image from "next/image";
 import { FaCheckCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
   return (
     <div className="container mx-auto mt-20 px-4">
       <div className="grid gap-10 md:grid-cols-2 items-center">
@@ -54,7 +57,10 @@ const page = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
-            <button className="bg-[#66a966] hover:bg-[#559c55] text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 w-full sm:w-auto">
+            <button
+              className="bg-[#66a966] hover:bg-[#559c55] text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300 w-full sm:w-auto"
+              onClick={() => router.push("/#contact-us")}
+            >
               Boka Airbnb-städning
             </button>
           </motion.div>

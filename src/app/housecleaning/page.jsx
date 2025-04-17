@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { FaBroom, FaSprayCan } from "react-icons/fa";
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 
 import homeservices from "../../assets/images/home-services.jpg";
 import homeaffairs from "../../assets/images/homeaffairs.jpg";
@@ -266,12 +267,13 @@ const HouseCleaning = () => {
 
         {/* Boka Nu Button */}
         <div className="text-center mt-8">
-          <a
-            href="#boka"
+          <Link
+            href="/#contact-us"
+            scroll={false}
             className="inline-block px-6 py-3 bg-[#66a966] text-white text-lg font-semibold rounded-lg hover:bg-[#558e56] transition-all"
           >
             Boka Nu
-          </a>
+          </Link>
         </div>
       </motion.div>
     </>

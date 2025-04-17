@@ -2,14 +2,14 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; // Make sure you are using the correct version of this function
+import { useRouter } from "next/navigation";
 import { FaBars, FaTimes } from "react-icons/fa";
 import imageLogo from "../../assets/images/logo1.png";
 import Image from "next/image";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter(); // Using useRouter for client-side navigation
+  const router = useRouter(); //
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
@@ -17,13 +17,13 @@ const Navbar = () => {
 
   const handleNavigation = (sectionId) => {
     if (router.pathname !== "/") {
-      router.push("/#" + sectionId); // Using router.push for navigation
+      router.push("/#" + sectionId);
     } else {
       document
         .getElementById(sectionId)
         ?.scrollIntoView({ behavior: "smooth" });
     }
-    setIsOpen(false); // Close the menu on mobile
+    setIsOpen(false);
   };
 
   return (
