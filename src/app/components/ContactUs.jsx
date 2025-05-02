@@ -92,7 +92,7 @@ export default function ContactUS() {
           idag för en <strong>kostnadsfri offert!</strong>
         </div>
         <div className="text-gray-500 font-bold">
-          <p>Tel: 0767-115 241</p>
+          <p>Tel: 0790-061 375</p>
           <p>Epost: rose@zoecleaning.se</p>
         </div>
       </motion.div>

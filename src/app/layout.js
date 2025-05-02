@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
                 addressLocality: "Stockholm",
                 addressCountry: "SE",
               },
-              telephone: "+46-767-115241",
+              telephone: "+46-790-061 375",
               openingHours: "Mo-Su 00:00-23:59",
               description:
                 "Eco-friendly and reliable cleaning services in Stockholm.",
